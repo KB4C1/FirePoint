@@ -91,6 +91,11 @@
       grid-row: 1 / 2;
       z-index: 2;
 
+
+     @media (min-width: 340px) {
+        place-self: end center;
+      }
+
       @media (min-width: 480px) {
         font-size: 0.7rem;
         text-align: left;
