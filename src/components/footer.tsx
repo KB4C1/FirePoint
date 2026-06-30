@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Logo from "../assets/FirePointLogo.svg";
 import Button from "./Button";
-import ContactUs from "./contactUsFrom";
+import ContactUs from "./contactUsForm";
 
 export default function Footer() {
   const [isContactOpen, setContactOpen] = useState(false);

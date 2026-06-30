@@ -1,3 +1,4 @@
+import type { FormEvent } from "react";
 import Button from "./Button";
 
 interface ContactUsProps {
@@ -6,12 +7,19 @@ interface ContactUsProps {
 }
 
 export default function ContactUs({ isOpen, onClose }: ContactUsProps) {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("Форму успішно надіслано без перезавантаження сторінки!");
+
+    onClose();
+  };
+
   return (
     <div
       className={`z-50 fixed inset-0 w-screen h-screen bg-[#00000075] items-center justify-center ${isOpen ? "flex" : "hidden"}`}
     >
       <div className="text-sm w-[90%] max-w-md bg-[#0c0c0b] border border-solid border-white p-6 rounded-lg">
-        <form action="contact-us" className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <h2 className="text-xl text-center text-white">Зв'яжіться з нами</h2>
 
           <div className="flex flex-col gap-1">
@@ -39,10 +47,10 @@ export default function ContactUs({ isOpen, onClose }: ContactUsProps) {
           </div>
 
           <div className="flex gap-3 justify-end mt-2">
-            <Button onClick={onClose}>
+            <Button type="button" onClick={onClose}>
               <strong>Скасувати</strong>
             </Button>
-            <Button onClick={() => {}}>
+            <Button type="submit">
               <strong>Надіслати</strong>
             </Button>
           </div>
